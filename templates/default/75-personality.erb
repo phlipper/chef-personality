@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source /etc/profile.d/rvm.sh
+
+# a little personality
+characters=(<%= @characters %>)
+num_characters=${#characters[*]}
+
+/usr/games/fortune | \
+  /usr/games/cowsay -f ${characters[$((RANDOM%num_characters))]} | \
+  rvm default exec lolcat -f
